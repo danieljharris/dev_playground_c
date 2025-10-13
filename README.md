@@ -1,2 +1,2 @@
-# dev_playground
-C++ &amp; Rust Dev Playground
+# dev_playground_c
+C++ Dev Playground
