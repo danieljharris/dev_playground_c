@@ -1,5 +1,7 @@
 FROM debian:trixie
 
+USER root
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     gcc \
@@ -12,15 +14,7 @@ RUN apt-get update && apt-get install -y \
     tar \
     pkg-config \
     sudo \
+    libspdlog-dev \
     && rm -rf /var/lib/apt/lists/*
 
-ENV CXXFLAGS="-std=c++23"
-
-RUN useradd -m vscode \
-    && usermod -aG sudo vscode \
-    && echo "vscode ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode \
-    && chmod 0440 /etc/sudoers.d/vscode
-USER vscode
-WORKDIR /workspace
-
-CMD ["bash"]
+ARG USERNAME=vscode

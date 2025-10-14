@@ -11,8 +11,7 @@
       "extensions": [
         "ms-vscode.cpptools",
         "vscode.git",
-        "Gruntfuggly.todo-tree",
-        "ms-vscode.cmake-tools"
+        "Gruntfuggly.todo-tree"
       ]
     }
   }

@@ -2,29 +2,21 @@
 
 set -eu
 
-if ! command -v cmake >/dev/null 2>&1; then
-	printf '%s\n' "Error: cmake is not installed or not on PATH." >&2
-	exit 1
-fi
-
-if ! command -v git >/dev/null 2>&1; then
-	printf '%s\n' "Error: git is not installed or not on PATH." >&2
-	exit 1
-fi
-
-for dep in curl zip unzip tar pkg-config; do
-	if ! command -v "$dep" >/dev/null 2>&1; then
-		printf '%s\n' "Error: $dep is required for vcpkg. Install it via your package manager and rerun." >&2
-		exit 1
-	fi
-done
-
 # Resolve repository root regardless of invocation path
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 BUILD_DIR="$SCRIPT_DIR/build"
 VCPKG_ROOT_DEFAULT="$SCRIPT_DIR/vcpkg"
 VCPKG_ROOT=${VCPKG_ROOT:-$VCPKG_ROOT_DEFAULT}
 VCPKG_TRIPLET=${VCPKG_TRIPLET:-x64-linux}
+
+# Prefer gcc-14/g++-14 if installed to get C++23 std::expected support
+if command -v g++-14 >/dev/null 2>&1 && command -v gcc-14 >/dev/null 2>&1; then
+	export CC=$(command -v gcc-14)
+	export CXX=$(command -v g++-14)
+	printf '%s\n' "Using compiler: $CXX"
+else
+	printf '%s\n' "g++-14/gcc-14 not found; using system default compiler: $(command -v ${CXX:-c++})"
+fi
 
 if [ ! -d "$VCPKG_ROOT" ]; then
 	printf '%s\n' "Cloning vcpkg into $VCPKG_ROOT"
