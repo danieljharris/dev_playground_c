@@ -8,7 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(playground
 	src/main.cpp
-	src/challenge1/challenge.cpp
+	src/seed/seed.cpp
 	src/expected/expected.cpp
 )
 
