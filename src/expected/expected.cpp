@@ -13,7 +13,6 @@ Expected::Expected() {
     spdlog::info("Expected object created");
 
     expected<int, string> result = processInput(42);
-
     if (result) {
         spdlog::info("Processing succeeded: {}", *result);
     } else {

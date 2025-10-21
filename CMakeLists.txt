@@ -10,6 +10,11 @@ add_executable(playground
 	src/main.cpp
 	src/seed/seed.cpp
 	src/expected/expected.cpp
+	src/structures/structures.cpp
+	src/trade/trade.cpp
+	src/trade/api.cpp
+	src/questions/questions.cpp
+	src/straylight/straylight.cpp
 )
 
 target_include_directories(playground PRIVATE ${PROJECT_SOURCE_DIR}/src)

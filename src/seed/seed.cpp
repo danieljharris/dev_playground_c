@@ -32,6 +32,10 @@ Seed::Seed() {
     spdlog::info("Search Finished!");
 }
 
+bool isWhitespace(string text) {
+    return text.empty() || text == "" || text == " " || text == "\n" || text == "\r";
+}
+
 optional<maps> getNextMaps(ifstream &sampleData) {
     string text;
 
@@ -41,7 +45,7 @@ optional<maps> getNextMaps(ifstream &sampleData) {
     maps newMaps;
     while (getline(sampleData, text)) {
         vector<int> numbers;
-        if (text == "") break;
+        if (isWhitespace(text)) break;
 
         stringstream line(text);
         string lineText;
@@ -66,8 +70,11 @@ tuple<vector<int>, mapOmaps> Seed::ingest() {
     string text;
     getline(sampleData, text);
 
+    spdlog::info("Here: 1");
+
     while (getline(sampleData, text)) {
-        if (text == "") break;
+        if (isWhitespace(text)) break;
+
         stringstream line(text);
         string lineText;
         while (getline(line, lineText, ' ')) {
@@ -75,12 +82,16 @@ tuple<vector<int>, mapOmaps> Seed::ingest() {
         }
     }
 
+    spdlog::info("Here: 2");
+
     bool linesRemaining = true;
     do {
         optional<maps> result = getNextMaps(sampleData);
         if (result) metaMaps.push_back(*result);
         else linesRemaining = false;
     } while (linesRemaining);
+
+    spdlog::info("Here: 3");
 
     sampleData.close();
 
