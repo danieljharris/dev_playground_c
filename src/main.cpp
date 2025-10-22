@@ -12,10 +12,10 @@ int main() {
 
     // Expected expectedObj;
     // Structures structures;
-    Trade trade;
+    // Trade trade;
     // Questions questions;
 
-    // Straylight straylight;
+    Straylight straylight;
 
     return 0;
 }

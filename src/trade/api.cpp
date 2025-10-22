@@ -35,7 +35,6 @@ void OrderBook::addOrder(const Order& order) {
 }
 
 void OrderBook::tryMatch() {
-    int maxAmount = 10;
     int amountBought = 0;
     do {
         if (buys.empty() || sells.empty()) return;
@@ -71,15 +70,13 @@ void OrderBook::tryMatch() {
             buys.push(inBuy);
         }
 
-        maxAmount--;
-    } while (amountBought > 0 && maxAmount > 0);
+    } while (amountBought > 0);
 
-    if(maxAmount == 0) spdlog::error("Max Hit");
-    spdlog::error("Exiting.");
+    spdlog::warn("No transation found");
 }
 
 optional<tuple<int, int>> OrderBook::compareOrders(const Order& buy, const Order& sell) {
-    // spdlog::debug("Compairing: BUY {} @ {} x {} with SELL {} @ {} x {}", buy.id, buy.price, buy.quantity, sell.id, sell.price, sell.quantity);
+    spdlog::debug("Compairing: BUY {} @ {} x {} with SELL {} @ {} x {}", buy.id, buy.price, buy.quantity, sell.id, sell.price, sell.quantity);
 
     if (buy.price < sell.price) return nullopt;
 
