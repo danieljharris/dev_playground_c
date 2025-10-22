@@ -58,6 +58,7 @@ private:
     std::priority_queue<Order, std::vector<Order>, BuyComparator> buys;
     std::priority_queue<Order, std::vector<Order>, SellComparator> sells;
     optional<tuple<int, int>> compareOrders(const Order& buy, const Order& sell);
+    void tryMatch();
     
 public:
     OrderBook() = default;

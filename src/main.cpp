@@ -7,7 +7,7 @@
 #include "straylight/straylight.h"
 
 int main() {
-    spdlog::set_level(spdlog::level::debug);
+    // spdlog::set_level(spdlog::level::debug);
     spdlog::info("Dev Playground C++ is Starting...");
 
     // Expected expectedObj;
