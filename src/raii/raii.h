@@ -1,13 +1,8 @@
+// RAII (Resource Acquisition Is Initialization)
 #pragma once
 #include <spdlog/spdlog.h>
 #include <expected>
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <vector>
 #include <string>
-#include <optional>
-#include <tuple>
 
 using std::vector;
 using std::string;
@@ -21,11 +16,12 @@ using std::make_tuple;
 using std::tie;
 using std::expected;
 using std::unexpected;
+using std::tolower;
 using std::to_string;
 
-class Straylight {
+class Raii {
 private:
-
+    Raii();
 public:
-    Straylight();
+    static expected<Raii, string> create(int initValue);
 };

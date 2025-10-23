@@ -1,5 +1,14 @@
 #include "straylight.h"
 
-void Straylight::run() {
+Straylight::Straylight() {
     spdlog::info("Straylight Running...");
+
+
+    spdlog::info("Straylight Finished.");
 }
+
+/*
+
+    
+
+*/

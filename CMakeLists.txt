@@ -14,6 +14,7 @@ add_executable(playground
 	src/trade/trade.cpp
 	src/trade/api.cpp
 	src/questions/questions.cpp
+	src/raii/raii.cpp
 	src/straylight/straylight.cpp
 )
 
