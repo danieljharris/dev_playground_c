@@ -22,3 +22,6 @@ target_include_directories(playground PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
 find_package(spdlog CONFIG REQUIRED)
 target_link_libraries(playground PRIVATE spdlog::spdlog)
+
+find_package(ixwebsocket CONFIG REQUIRED)
+target_link_libraries(ixwebsocket PRIVATE WebSocket::webSocket)

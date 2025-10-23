@@ -28,4 +28,5 @@ private:
 
 public:
     Straylight();
+    // static void handleWebsocket(const std::string & message);
 };
