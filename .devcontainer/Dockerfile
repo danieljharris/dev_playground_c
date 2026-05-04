@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     sudo \
     libspdlog-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=vscode

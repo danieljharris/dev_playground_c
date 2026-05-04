@@ -15,6 +15,7 @@ add_executable(playground
 	src/trade/api.cpp
 	src/questions/questions.cpp
 	src/raii/raii.cpp
+	src/straylight/client_wss.hpp
 	src/straylight/straylight.cpp
 )
 
@@ -23,5 +24,5 @@ target_include_directories(playground PRIVATE ${PROJECT_SOURCE_DIR}/src)
 find_package(spdlog CONFIG REQUIRED)
 target_link_libraries(playground PRIVATE spdlog::spdlog)
 
-find_package(ixwebsocket CONFIG REQUIRED)
-target_link_libraries(ixwebsocket PRIVATE WebSocket::webSocket)
+find_package(OpenSSL REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system thread)

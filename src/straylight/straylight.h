@@ -23,10 +23,22 @@ using std::expected;
 using std::unexpected;
 using std::to_string;
 
+enum OrderType {
+    BUY,
+    SELL
+};
+
+struct BinanceOrder {
+    OrderType type;
+    int price; // dec shifted value stored for precision
+    int quantity;
+};
+
 class Straylight {
 private:
 
 public:
     Straylight();
     // static void handleWebsocket(const std::string & message);
+    void add(BinanceOrder newOrder);
 };
